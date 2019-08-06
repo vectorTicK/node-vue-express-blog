@@ -4,7 +4,7 @@ app.set('secret', 'abcd')
 app.use(require('cors')())
 app.use(express.json())
 
-app.use('/web', express.static(__dirname + '/web'))
+app.use('/', express.static(__dirname + '/web'))
 // 引用数据库
 require('./plugins/db')(app)
 // 路由
