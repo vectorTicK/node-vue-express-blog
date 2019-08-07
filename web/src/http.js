@@ -2,8 +2,9 @@ import axios from "axios"
 import Vue from 'vue'
 import router from './router'
 const http = axios.create({
-    baseURL: process.env.VUE_APP_API_URL || '/blog/api',
+    // baseURL: process.env.VUE_APP_API_URL || '/blog/api',
     // baseURL: 'http://localhost:3000/blog/api'
+    baseURL: 'http://47.75.177.192:8080/blog/api'
 })
 
 http.interceptors.request.use(config => {

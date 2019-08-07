@@ -54,6 +54,5 @@ module.exports = app => {
         const data = await req.Model.findByIdAndUpdate(req.params.id, req.body)
         res.send(data)
     })
-    // app.use('/blog/api/rest/:model',authMiddleware(), modelMiddleware(), router)
-    app.use('/blog/api/rest/:model', modelMiddleware(), router)
+    app.use('/blog/api/rest/:model',authMiddleware(), modelMiddleware(), router)
 }
