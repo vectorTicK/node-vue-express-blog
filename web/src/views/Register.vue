@@ -1,6 +1,6 @@
 <template>
       <div class="register-container">
-        <el-card header="请先注册" class="register-card">
+        <el-card header="请先注册" class="register-card text-primary fs-xl">
             <el-form @submit.native.prevent="register">
                 <el-form-item label="用户名">
                     <el-input v-model="model.username"></el-input>
@@ -12,7 +12,11 @@
                     <el-input type="password" v-model="model.comfirmPassword"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" native-type="submit">注册</el-button>
+                    <div class="d-flex jc-between">
+                        <el-button type="primary" native-type="submit" class="btn">注册</el-button>
+                        <a href="/login" class="text-primary fs-sm">已有账号，去登录</a>
+                    </div>
+                    
                 </el-form-item>
             </el-form>
         </el-card>

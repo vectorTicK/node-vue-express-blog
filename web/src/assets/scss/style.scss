@@ -1,4 +1,5 @@
 @import './variables';
+
 // reset css
 * {
     box-sizing: border-box;
@@ -19,6 +20,7 @@ a {
     text-decoration: none;
     cursor: pointer;
 }
+
 p {
     line-height: 1.75rem;
 }
@@ -26,7 +28,7 @@ p {
 // text
 @each $var in (left, center, right) {
     .text-#{$var} {
-        text-align: $var !important ; 
+        text-align: $var !important;
     }
 }
 
@@ -89,22 +91,27 @@ $value in $flex-ai {
 
 @each $type-key,
 $type-value in $spacing-types {
+
     @each $direction-key,
     $direction-value in $spacing-directions {
+
         @each $key,
         $size in $spacing-sizes {
             .#{$type-key}#{$direction-key}-#{$key} {
                 #{$type-value}-#{$direction-value}: $size*$spacing-base-size;
             }
+
             // .m-0,p-0
             .#{$type-key}-#{$key} {
                 #{$type-value}: $size*$spacing-base-size;
             }
+
             // .mx-0
             .#{$type-key}x-#{$key} {
                 #{$type-value}-left: $size*$spacing-base-size;
                 #{$type-value}-right: $size*$spacing-base-size;
             }
+
             // .my-0
             .#{$type-key}y-#{$key} {
                 #{$type-value}-top: $size*$spacing-base-size;
@@ -118,21 +125,26 @@ $type-value in $spacing-types {
     border: none;
     border-radius: 0.2308rem;
     font-size: map-get($map: $font-sizes, $key: 'sm')*$base-font-size;
+    background-color: map-get($map: $colors, $key: 'primary');
 }
 
 .nav {
     display: flex;
+
     .nav-item {
         border-bottom: 3px solid transparent;
         padding-bottom: 0.1rem;
-    }
+    } 
+
     .active {
         color: map-get($map: $colors, $key: 'primary');
         border-bottom: 3px solid map-get($map: $colors, $key: 'primary');
     }
 }
+
 .nav-inverse {
     display: flex;
+
     .nav-item {
         color: white;
         border-bottom: 3px solid transparent;
@@ -146,8 +158,9 @@ $type-value in $spacing-types {
 }
 
 .w-100 {
-    width:100%;
+    width: 100%;
 }
+
 .h-100 {
     height: 100%;
 }

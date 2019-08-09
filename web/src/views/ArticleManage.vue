@@ -9,6 +9,7 @@
             <el-table-column fixed="right" label="操作" width="180">
                 <template slot-scope="scope">
                     <el-button
+                    class="btn"
                         type="primary"
                         size="small"
                         @click="$router.push(`/write-article/${scope.row._id}`)"
@@ -50,10 +51,10 @@ export default {
                     });
                     this.fetch();
                 })
-                .catch(err => {
+                .catch(() => {
                     this.$message({
                         type: "success",
-                        message: err
+                        message: "我再考虑考虑"
                     });
                 });
         }

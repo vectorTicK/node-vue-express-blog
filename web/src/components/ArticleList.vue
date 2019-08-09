@@ -20,11 +20,11 @@
                         <div class="w-100 fs-sm text-dark-1 text-ellipsis pb-2">{{article.body}}</div>
                     </router-link>
                 </div>
-                <div class="d-flex">
+                <div class="d-flex jc-between">
                     <router-link
                         tag="a"
                         :to="`/user/${article.author._id}`"
-                        class="flex-1 text-primary"
+                        class="text-primary"
                     >{{article.author.username}}</router-link>
                     <span class="date fs-xs">{{article.createdAt | date}}</span>
                 </div>

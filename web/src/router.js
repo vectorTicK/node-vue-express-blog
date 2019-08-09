@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Test from './views/Test.vue'
 import HomeNav from './views/HomeNav.vue'
 
 import Login from './views/Login.vue'
@@ -9,20 +9,26 @@ import ArticleList from './views/ArticleList'
 import ArticleEdit from './views/ArticleEdit'
 import ArticleManage from './views/ArticleManage'
 import Article from './views/Article'
+import UserInfo from './views/UserInfo'
 Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
   // base: process.env.BASE_URL,
-    base: '/',
+  base: '/',
 
-  routes: [
-    {
+  routes: [{
       path: '/',
       // name: 'home',
       component: HomeNav,
-      children: [
-        {path: '/', name: 'article-list', component: ArticleList},  
+      meta: {
+        title: "首页"
+      },
+      children: [{
+          path: '/',
+          name: 'article-list',
+          component: ArticleList
+        },
         {
           path: '/write-article',
           name: 'writeArticle',
@@ -44,6 +50,11 @@ const router = new Router({
           name: 'article',
           component: Article,
           props: true
+        }, {
+          path: '/user/:id',
+          name: 'userinfo',
+          component: UserInfo,
+          props: true
         }
       ]
     },
@@ -51,13 +62,25 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: Login,
-      meta: {isPublic: true}
+      meta: {
+        title: "登录我的博客",
+        isPublic: true
+      }
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: Test,
+      meta: {
+        isPublic: true
+      }
     },
     {
       path: '/register',
       name: 'register',
       component: Register,
       meta: {
+        title: "注册账号",
         isPublic: true
       }
     }
@@ -71,6 +94,11 @@ router.beforeEach((to, from, next) => {
       message: '请登录'
     })
     return next('/login')
+  }
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }else{
+    document.title = "MY BLOG "
   }
   next()
 })

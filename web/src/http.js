@@ -14,18 +14,18 @@ http.interceptors.request.use(config => {
     return config
 })
 
-http.interceptors.response.use( (response)=> {
+http.interceptors.response.use((response) => {
     // Do something with response data
     return response;
-}, (error)=> {
+}, (error) => {
     // Do something with response error
     Vue.prototype.$message({
-        message: error.response.data.message,
+        message: error.response.status+error.response.data.message,
         type: 'error'
     })
     if (error.response.status === 401) {
         router.push('/login')
     }
-    return Promise.reject(error);
+    // return Promise.reject(error);
 });
 export default http

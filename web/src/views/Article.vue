@@ -20,10 +20,12 @@ export default {
         async fetchArticle(){
             const res = await this.$http.get(`/rest/article/${this.id}`)
             this.model = res.data
+            document.title = this.model.title
+   
         }
     },
     created(){
         this.fetchArticle()
-    }
+     }    
 }
 </script>

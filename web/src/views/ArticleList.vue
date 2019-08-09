@@ -11,7 +11,11 @@
     </div>
 </template>
 <script>
+import ArticleList from '../components/ArticleList'
 export default {
+    components: {
+        'm-article-list': ArticleList
+    },
     data() {
         return {
             articles: [],
@@ -30,10 +34,7 @@ export default {
                 .catch(err => {
                     this.loading = false;
                 });
-            // res.data.map(article => {
-            //     article.oneline = article.body.replace(/<[^>]+>/g,"");
-            //     return article;
-            // });
+
         }
     },
     created() {

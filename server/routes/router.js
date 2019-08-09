@@ -39,7 +39,6 @@ module.exports = app => {
         } else {
             data = await req.Model.find().limit(10)
         }
-        console.log(data)
         res.send(data)
     })
 

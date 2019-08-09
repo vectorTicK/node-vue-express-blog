@@ -1,21 +1,8 @@
 <template>
-    <el-container>
-        <el-header>
+    <div class="m-3">
+        <div>
             <div class="nav d-flex ai-center pt-5 pb-3 fs-xl border-bottom">
                 <img class="logo mr-3" src="../assets/logo.png" alt />
-                <!-- <div class="mr-5" :class="{active:(0===active)}" @click="active=0" >
-                    <router-link to="/" >主页</router-link>
-                </div>
-                <div class="mr-5" :class="{active:(1===active)}" @click="active=1">
-                    <router-link to="/write-article">写文章</router-link>
-                </div>
-                <div class="" :class="{active:(2===active)}" @click="active=2">
-                    <router-link to="/manage-articles">管理文章</router-link>
-                </div>
-                <div class="flex-1">
-
-                </div>-->
-                <!-- 导航列表 -->
                 <div
                     class="nav-item mr-5"
                     v-for="(item, index) in nav"
@@ -23,14 +10,18 @@
                     :key="index"
                 >
                     <!-- 判断高亮表 -->
-                    <a class="text-grey-1" :class="navIndex === index ? 'active' : 'item-cn'">{{ item.title }}</a>
+                    <a
+                        class="text-grey-1"
+                        :class="navIndex === index ? 'active' : 'item-cn'"
+                    >{{ item.title }}</a>
                     <!-- 判断高亮表 -->
                 </div>
                 <div class="flex-1"></div>
                 <div class="fs-lg">
                     <span>Hello,</span>
                     <span>
-                        <a  href=""
+                        <a
+                            href
                             @click="logout"
                             class="text-primary"
                             style="font-weight:bold"
@@ -38,11 +29,11 @@
                     </span>
                 </div>
             </div>
-        </el-header>
-        <el-main class="mt-3">
+        </div>
+        <div class="mt-3">
             <router-view :key="$route.path"></router-view>
-        </el-main>
-    </el-container>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -60,21 +51,13 @@ export default {
     },
     methods: {
         async getUserInfo() {
-            const res =await this.$http.get("/userinfo")
-            .then((res) => {
-                this.$set(this, "model", res.data);
-            })
-            .catch(err => {
-                this.$router.push("/error");
-                this.$message({
-                    type: "error",
-                    message: '服务器异常'
-                })
-            })
+            const res = await this.$http.get("/userinfo");
+            this.$set(this, "model", res.data);
         },
         logout() {
-            this.$router.push("/login");
+            this.$router.push('/login')
             localStorage.removeItem("token");
+
         },
         /**
          * 路由跳转
@@ -99,6 +82,7 @@ export default {
     },
     created() {
         this.getUserInfo();
+        
         // 获取当前路径
         let path = this.$route.path;
         // 检索当前路径

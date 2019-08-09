@@ -7,9 +7,9 @@ import './assets/scss/style.scss'
 Vue.config.productionTip = false
 Vue.prototype.$http = http
 
-import ArticleList from './components/ArticleList'
-Vue.component('m-article-list', ArticleList)
 new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+
+
