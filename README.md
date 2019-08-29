@@ -1,4 +1,4 @@
-# Node.js + Vue.js 开发建议博客
+# Node.js + Vue.js 开发简易博客
 
 > 学习node.js、vue.js、MongoDB
 
